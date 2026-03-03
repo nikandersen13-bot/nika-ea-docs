@@ -1,0 +1,21 @@
+name: Fetch HTML files
+on:
+  workflow_dispatch:
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download files
+        run: |
+          curl -L -o god-mode.html "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/5612a6b1-f0f6-47ea-bb21-a58ef9ab3432/Nika_EA_V1.27_God_Mode.html"
+          curl -L -o quick-reference.html "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/1fa7f204-20f7-4f90-a149-34224f5a4e54/Nika_EA_V1.27_Quick_Reference-2.html"
+      - name: Commit files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add god-mode.html quick-reference.html
+          git commit -m "Add God Mode Dashboard and Quick Reference HTML files"
+          git push
