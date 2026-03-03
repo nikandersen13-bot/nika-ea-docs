@@ -1,2 +1,161 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>KRN97RX05C8BGSXY</RequestId><HostId>9PGOiXIP8vQMpYXpXg0uzqeRHSXkSCXivTX2wfK2hBCpnSurBgvntbtUBVi3Gxon/qYDUhURIjBVa349SPoZgMpn8eTtgYENwUUpogL2ykU=</HostId></Error>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nika EA V1.28 - Quick Reference Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0e17;color:#e0e0e0;line-height:1.6}
+.header{background:linear-gradient(135deg,#1a1f2e,#0d1117);padding:30px;text-align:center;border-bottom:2px solid #c9a84c}
+.header h1{font-size:2em;color:#c9a84c;margin-bottom:5px}
+.header p{color:#888;font-size:1em}
+.content{max-width:1000px;margin:0 auto;padding:20px}
+.card{background:#1a1f2e;border:1px solid #2a2f3e;border-radius:12px;padding:25px;margin-bottom:20px}
+.card h2{color:#c9a84c;margin-bottom:15px;font-size:1.3em;border-bottom:1px solid #2a2f3e;padding-bottom:10px}
+.card h3{color:#e8b84c;margin:12px 0 6px;font-size:1em}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+th{background:#c9a84c;color:#0a0e17;padding:8px;text-align:left;font-size:.85em}
+td{padding:7px 8px;border-bottom:1px solid #2a2f3e;font-size:.85em}
+tr:hover{background:#1e2433}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.75em;font-weight:bold}
+.badge-gold{background:#c9a84c22;color:#c9a84c;border:1px solid #c9a84c}
+.badge-green{background:#22c55e22;color:#22c55e;border:1px solid #22c55e}
+.badge-blue{background:#3b82f622;color:#3b82f6;border:1px solid #3b82f6}
+.badge-red{background:#ef444422;color:#ef4444;border:1px solid #ef4444}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
+.stat{background:#0d1117;border:1px solid #2a2f3e;border-radius:8px;padding:12px;text-align:center}
+.stat .val{font-size:1.5em;color:#c9a84c;font-weight:bold}
+.stat .lbl{color:#888;font-size:.8em;margin-top:3px}
+.footer{text-align:center;padding:25px;color:#555;border-top:1px solid #222;margin-top:25px}
+a{color:#c9a84c;text-decoration:none}
+a:hover{text-decoration:underline}
+ol{padding-left:20px;margin:10px 0}
+ol li{margin-bottom:8px}
+.tip{background:#c9a84c11;border-left:3px solid #c9a84c;padding:10px 15px;margin:10px 0;border-radius:0 8px 8px 0;font-size:.9em}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>NIKA EA V1.28 &mdash; Quick Reference Guide</h1>
+<p>Essential Settings, Quick-Start Guide & Key Configurations</p>
+</div>
+<div class="content">
+<div class="card">
+<h2>Quick Start &mdash; 7 Steps</h2>
+<ol>
+<li><strong>Download the Quick Reference PDF</strong> &mdash; keep it open while configuring</li>
+<li><strong>Start with SET file #001</strong> (NikaCross-EMA-20-10-M15) &mdash; the baseline configuration</li>
+<li><strong>Use 0.5% risk per trade</strong> on a demo account for 2-4 weeks minimum</li>
+<li><strong>Enable core risk layers first</strong> &mdash; daily loss limit, max open lot, spread compensation</li>
+<li><strong>Read the Comprehensive Documentation</strong> for deep understanding</li>
+<li><strong>Walk-forward test</strong> using 70/30 in-sample/out-of-sample with Fitness Function 2 or 4</li>
+<li><strong>Optimize per-symbol</strong> &mdash; different parameters for EURUSD vs. GBPJPY vs. XAUUSD</li>
+</ol>
+</div>
+<div class="card">
+<h2>Architecture Overview</h2>
+<div class="grid">
+<div class="stat"><div class="val">3 Files</div><div class="lbl">EA + Indicator + MA Library</div></div>
+<div class="stat"><div class="val">12</div><div class="lbl">Signal Types</div></div>
+<div class="stat"><div class="val">11</div><div class="lbl">MA Methods</div></div>
+<div class="stat"><div class="val">15</div><div class="lbl">Risk Layers</div></div>
+<div class="stat"><div class="val">3</div><div class="lbl">Rule Slots</div></div>
+<div class="stat"><div class="val">10</div><div class="lbl">TP Levels</div></div>
+<div class="stat"><div class="val">10</div><div class="lbl">Scale-In Levels</div></div>
+<div class="stat"><div class="val">100</div><div class="lbl">Pre-Built SET Files</div></div>
+</div>
+</div>
+<div class="card">
+<h2>Signal Types Reference</h2>
+<table><tr><th>#</th><th>Signal</th><th>Use Case</th></tr>
+<tr><td>1</td><td>Nika Signal Crosses Average</td><td>Core trend-following crossover</td></tr>
+<tr><td>2</td><td>Signal Line Level Cross</td><td>Breakout / momentum trigger</td></tr>
+<tr><td>3</td><td>Histogram Level Cross</td><td>Momentum magnitude filter</td></tr>
+<tr><td>4</td><td>Histogram Moving Up/Down</td><td>Directional momentum</td></tr>
+<tr><td>5</td><td>MA Crossover</td><td>Classic dual-MA trend following</td></tr>
+<tr><td>6</td><td>Close Above/Below MA</td><td>Regime filter</td></tr>
+<tr><td>7</td><td>Two Signals Crossover</td><td>Divergence / acceleration</td></tr>
+<tr><td>8</td><td>Two Signals Cross Average</td><td>Multi-signal confirmation</td></tr>
+<tr><td>9</td><td>Signal Crosses Two Averages</td><td>Dual confirmation (anti-chop)</td></tr>
+<tr><td>10</td><td>Signal Line Moving Up/Down</td><td>Early directional bias</td></tr>
+<tr><td>11</td><td>Average Line Moving Up/Down</td><td>Smoothed trend filter</td></tr>
+<tr><td>12</td><td>Signal & Average Together</td><td>Confluence / noise filter</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>MA Methods Quick Reference</h2>
+<table><tr><th>Method</th><th>Abbr</th><th>Best For</th></tr>
+<tr><td>Simple</td><td>SMA</td><td>Baseline, smoothest signals</td></tr>
+<tr><td>Exponential</td><td>EMA</td><td>General purpose, moderate speed</td></tr>
+<tr><td>Hull</td><td>HMA</td><td>Fast response with smoothness</td></tr>
+<tr><td>DEMA/TEMA</td><td>DEMA/TEMA</td><td>Reduced lag for scalping</td></tr>
+<tr><td>Zero-Lag</td><td>ZLEMA</td><td>Minimal lag entries</td></tr>
+<tr><td>T3 Tillson</td><td>T3</td><td>Ultra-smooth with configurable factor</td></tr>
+<tr><td>Volume-Weighted</td><td>VWMA</td><td>Volume-aware filtering</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Risk Layers Summary</h2>
+<table><tr><th>Layer</th><th>Key Setting</th></tr>
+<tr><td>Stop Loss</td><td>Fixed Pips / ATR Multiplier / Price Promille</td></tr>
+<tr><td>Take Profit</td><td>10 levels: RRR trigger + partial close %</td></tr>
+<tr><td>Breakeven</td><td>Profit threshold + buffer pips</td></tr>
+<tr><td>Trailing</td><td>RRR Steps or Fixed % mode</td></tr>
+<tr><td>Daily Trailing</td><td>Equity high water mark trailing</td></tr>
+<tr><td>Daily Loss/Profit</td><td>Money or % limits with resume time</td></tr>
+<tr><td>Weekly Loss/Profit</td><td>Weekly caps with resume day/time</td></tr>
+<tr><td>Max Entries/Day</td><td>Integer cap on new trades</td></tr>
+<tr><td>Max Open Lot</td><td>Per-symbol or cross-symbol</td></tr>
+<tr><td>Cooldown</td><td>Separate bars for main/re-entry/scale-in</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Magic Numbers</h2>
+<table><tr><th>Magic</th><th>Purpose</th></tr>
+<tr><td>1000 (default)</td><td>Main EA trades</td></tr>
+<tr><td>1001</td><td>Re-entry trades</td></tr>
+<tr><td>1002</td><td>Scale-in trades</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Recommended Setup</h2>
+<table><tr><th>Setting</th><th>Recommendation</th></tr>
+<tr><td>Account Type</td><td>ECN or RAW spread</td></tr>
+<tr><td>Account Size</td><td>$5,000+ (backtested on $200K)</td></tr>
+<tr><td>Leverage</td><td>1:100 (backtested), works at lower</td></tr>
+<tr><td>Broker</td><td>Any MT5 with hedging support</td></tr>
+<tr><td>VPS</td><td>Required &mdash; 1GB RAM, 99.9% uptime</td></tr>
+<tr><td>Demo Period</td><td>2-4 weeks minimum before live</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Custom Fitness Functions (Optimizer)</h2>
+<table><tr><th>#</th><th>Formula</th><th>Best For</th></tr>
+<tr><td>1</td><td>Result / (DD + 2)</td><td>General balanced</td></tr>
+<tr><td>2</td><td>Result &times; Recovery</td><td>Recovery focus</td></tr>
+<tr><td>3</td><td>(Result / DD + 2) &times; Recovery</td><td>Conservative</td></tr>
+<tr><td>4</td><td>(Result / DD) &times; Recovery</td><td>Walk-forward recommended</td></tr>
+<tr><td>5</td><td>(Result / DD) &times; Sharpe</td><td>Risk-adjusted</td></tr>
+<tr><td>6</td><td>Win Rate weighted</td><td>High win rate strategies</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>SET File Categories</h2>
+<table><tr><th>Cat</th><th>Range</th><th>Focus</th></tr>
+<tr><td>A</td><td>001-020</td><td>NikaCross MA variations</td></tr>
+<tr><td>B</td><td>021-035</td><td>Multi-slot filter combos</td></tr>
+<tr><td>C</td><td>036-055</td><td>Alternative signal modes</td></tr>
+<tr><td>D</td><td>056-065</td><td>Stoploss method variations</td></tr>
+<tr><td>E</td><td>066-075</td><td>TP/Exit configurations</td></tr>
+<tr><td>F</td><td>076-088</td><td>Re-entry & scale-in</td></tr>
+<tr><td>G</td><td>089-100</td><td>Risk filters & sessions</td></tr>
+</table>
+<div class="tip">Start with SET #001 (NikaCross-EMA-20-10-M15) as your baseline, then explore categories that match your trading style.</div>
+</div>
+</div>
+<div class="footer">
+<p>&copy; 2026 NIKA &bull; <a href="https://www.mql5.com/en/market/product/167134">Get Nika EA on MQL5 Market</a> &bull; <a href="god-mode.html">God Mode Dashboard</a> &bull; <a href="index.html">Documentation Hub</a></p>
+</div>
+</body>
+</html>
