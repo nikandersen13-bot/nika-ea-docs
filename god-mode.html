@@ -1,2 +1,287 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>8A48FABQA6JSJZH6</RequestId><HostId>aBNC5HeGCNXNmvC3LchMI55tLnlca/XT8ZkorDh7d+DdaHvtH6UT5o4Pvf76dEZAWfesjDfG2a8=</HostId></Error>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nika EA V1.28 - God Mode Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0e17;color:#e0e0e0;line-height:1.6}
+.header{background:linear-gradient(135deg,#1a1f2e,#0d1117);padding:30px;text-align:center;border-bottom:2px solid #c9a84c}
+.header h1{font-size:2.2em;color:#c9a84c;margin-bottom:5px}
+.header p{color:#888;font-size:1.1em}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;padding:15px;background:#0d1117;border-bottom:1px solid #222}
+.tab{padding:10px 20px;background:#1a1f2e;color:#888;border:1px solid #333;border-radius:8px 8px 0 0;cursor:pointer;transition:all .3s;font-size:.9em}
+.tab:hover{color:#c9a84c;border-color:#c9a84c}
+.tab.active{background:#c9a84c;color:#0a0e17;border-color:#c9a84c;font-weight:bold}
+.content{max-width:1200px;margin:0 auto;padding:20px}
+.panel{display:none;animation:fadeIn .3s}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.card{background:#1a1f2e;border:1px solid #2a2f3e;border-radius:12px;padding:25px;margin-bottom:20px}
+.card h2{color:#c9a84c;margin-bottom:15px;font-size:1.4em;border-bottom:1px solid #2a2f3e;padding-bottom:10px}
+.card h3{color:#e8b84c;margin:15px 0 8px;font-size:1.1em}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+th{background:#c9a84c;color:#0a0e17;padding:10px;text-align:left;font-size:.85em}
+td{padding:8px 10px;border-bottom:1px solid #2a2f3e;font-size:.85em}
+tr:hover{background:#1e2433}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.75em;font-weight:bold}
+.badge-gold{background:#c9a84c22;color:#c9a84c;border:1px solid #c9a84c}
+.badge-green{background:#22c55e22;color:#22c55e;border:1px solid #22c55e}
+.badge-blue{background:#3b82f622;color:#3b82f6;border:1px solid #3b82f6}
+.badge-red{background:#ef444422;color:#ef4444;border:1px solid #ef4444}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin:15px 0}
+.stat{background:#0d1117;border:1px solid #2a2f3e;border-radius:8px;padding:15px;text-align:center}
+.stat .val{font-size:1.8em;color:#c9a84c;font-weight:bold}
+.stat .lbl{color:#888;font-size:.85em;margin-top:5px}
+.search{width:100%;padding:12px;background:#0d1117;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:1em;margin-bottom:20px}
+.search:focus{outline:none;border-color:#c9a84c}
+.footer{text-align:center;padding:30px;color:#555;border-top:1px solid #222;margin-top:30px}
+a{color:#c9a84c;text-decoration:none}
+a:hover{text-decoration:underline}
+.collapsible{cursor:pointer;padding:12px;background:#0d1117;border:1px solid #2a2f3e;border-radius:8px;margin:5px 0;display:flex;justify-content:space-between;align-items:center}
+.collapsible:hover{border-color:#c9a84c}
+.collapsible-content{display:none;padding:15px;background:#0d1117;border:1px solid #2a2f3e;border-top:0;border-radius:0 0 8px 8px;margin-top:-6px;margin-bottom:10px}
+.collapsible-content.open{display:block}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>NIKA EA V1.28 — God Mode Dashboard</h1>
+<p>Complete Interactive Reference — All Parameters, Signals, Risk Layers & Optimization Data</p>
+</div>
+<div class="tabs" id="tabs">
+<div class="tab active" onclick="showTab(0)">Architecture</div>
+<div class="tab" onclick="showTab(1)">Signal Engine</div>
+<div class="tab" onclick="showTab(2)">Risk Management</div>
+<div class="tab" onclick="showTab(3)">Trade Management</div>
+<div class="tab" onclick="showTab(4)">Parameters</div>
+<div class="tab" onclick="showTab(5)">SET Files</div>
+<div class="tab" onclick="showTab(6)">Backtest Results</div>
+<div class="tab" onclick="showTab(7)">MA Library</div>
+</div>
+<div class="content">
+<!-- Tab 0: Architecture -->
+<div class="panel active" id="panel-0">
+<div class="card">
+<h2>Core Architecture</h2>
+<div class="grid">
+<div class="stat"><div class="val">6,900+</div><div class="lbl">Lines of Code</div></div>
+<div class="stat"><div class="val">3</div><div class="lbl">File System</div></div>
+<div class="stat"><div class="val">9.3/10</div><div class="lbl">AI Composite Score</div></div>
+<div class="stat"><div class="val">Top 0.5%</div><div class="lbl">of All EAs Analyzed</div></div>
+</div>
+<h3>Three-File System</h3>
+<table><tr><th>Component</th><th>Purpose</th><th>Details</th></tr>
+<tr><td>Nika EA (Main)</td><td>Expert Advisor</td><td>6,900+ lines, signal processing, trade execution, risk management</td></tr>
+<tr><td>Universal Nika Trading</td><td>Custom Indicator</td><td>Runs in separate window, generates oscillator data streams</td></tr>
+<tr><td>All_MA Library</td><td>MA Calculations</td><td>11 moving average methods, shared across all components</td></tr>
+</table>
+<h3>Signal Pipeline</h3>
+<p>Raw Price Data &rarr; Heiken Ashi Smoothing (optional) &rarr; Linear Regression &rarr; MA Smoothing (11 types) &rarr; Signal Line + Average Line + Histogram &rarr; Crossover / Level / Direction Detection</p>
+</div>
+<div class="card">
+<h2>AI Code Analysis Scores</h2>
+<table><tr><th>Platform</th><th>Score</th><th>Key Finding</th></tr>
+<tr><td>GPT-5.2</td><td><span class="badge badge-gold">9.4/10</span></td><td>Professional-grade architecture</td></tr>
+<tr><td>Claude Opus 4</td><td><span class="badge badge-gold">9.2/10</span></td><td>No toxic risk patterns detected</td></tr>
+<tr><td>Gemini 2.5 Pro</td><td><span class="badge badge-gold">9.3/10</span></td><td>Robust error handling</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Independent Assessment Breakdown</h2>
+<table><tr><th>Category</th><th>Score</th></tr>
+<tr><td>Signal Engine</td><td><span class="badge badge-gold">9.0/10</span> &mdash; Genuinely novel pipeline</td></tr>
+<tr><td>Trade Management</td><td><span class="badge badge-gold">9.5/10</span> &mdash; Professional-grade execution</td></tr>
+<tr><td>Risk Management</td><td><span class="badge badge-green">10/10</span> &mdash; Institutional defense-in-depth</td></tr>
+<tr><td>Code Architecture</td><td><span class="badge badge-blue">8.5/10</span> &mdash; Clean modular design</td></tr>
+<tr><td>Innovation</td><td><span class="badge badge-gold">9.0/10</span> &mdash; Daily PL trailing, scale-in randomization</td></tr>
+</table>
+</div>
+</div>
+<!-- Tab 1: Signal Engine -->
+<div class="panel" id="panel-1">
+<div class="card">
+<h2>12 Signal Types</h2>
+<p>Each signal type can be assigned to any of 3 independent rule slots. Each slot runs on its own timeframe. This creates 36 possible rule instances.</p>
+<table><tr><th>#</th><th>Signal Type</th><th>Category</th><th>Description</th></tr>
+<tr><td>1</td><td>Nika Signal Crosses Average</td><td><span class="badge badge-gold">Crossover</span></td><td>Core oscillator signal line crosses its own moving average</td></tr>
+<tr><td>2</td><td>Nika Signal Line Level Cross</td><td><span class="badge badge-blue">Breakout</span></td><td>Signal line crosses user-defined threshold</td></tr>
+<tr><td>3</td><td>Histogram Level Cross</td><td><span class="badge badge-blue">Momentum</span></td><td>Histogram crosses defined level</td></tr>
+<tr><td>4</td><td>Histogram Moving Up/Down</td><td><span class="badge badge-green">Direction</span></td><td>Histogram increasing/decreasing across bars</td></tr>
+<tr><td>5</td><td>MA Crossover</td><td><span class="badge badge-gold">Crossover</span></td><td>Dual MA crossover with full control over type and period</td></tr>
+<tr><td>6</td><td>Close Above/Below MA</td><td><span class="badge badge-green">Filter</span></td><td>Price close relative to MA &mdash; regime filter</td></tr>
+<tr><td>7</td><td>Two Nika Signals Crossover</td><td><span class="badge badge-gold">Crossover</span></td><td>Two oscillator instances with crossover detection</td></tr>
+<tr><td>8</td><td>Two Nika Signals Cross Average</td><td><span class="badge badge-gold">Crossover</span></td><td>Both oscillators cross their averages simultaneously</td></tr>
+<tr><td>9</td><td>Nika Signal Crosses Two Averages</td><td><span class="badge badge-red">Confirmation</span></td><td>Signal must cross two distinct averages</td></tr>
+<tr><td>10</td><td>Nika Signal Line Moving Up/Down</td><td><span class="badge badge-green">Direction</span></td><td>Signal line directional without level cross</td></tr>
+<tr><td>11</td><td>Nika Average Line Moving Up/Down</td><td><span class="badge badge-green">Filter</span></td><td>Average line trending in specified direction</td></tr>
+<tr><td>12</td><td>Signal & Average Lines Together</td><td><span class="badge badge-red">Confluence</span></td><td>Both lines move same direction simultaneously</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Modular Rule System</h2>
+<table><tr><th>Feature</th><th>Details</th></tr>
+<tr><td>Rule Slots</td><td>3 independent slots, each with own signal type, timeframe, and role</td></tr>
+<tr><td>Role Assignment</td><td>Entry Trigger or Entry Filter per slot</td></tr>
+<tr><td>Entry Control</td><td>ALL (all rules align) or ANY (single qualifying rule)</td></tr>
+<tr><td>Exit Control</td><td>Same ALL/ANY logic for close-on-opposite signals</td></tr>
+<tr><td>Timeframe</td><td>Each slot independent of chart timeframe</td></tr>
+</table>
+</div>
+</div>
+<!-- Tab 2: Risk Management -->
+<div class="panel" id="panel-2">
+<div class="card">
+<h2>15 Independent Risk Layers</h2>
+<table><tr><th>#</th><th>Layer</th><th>Type</th><th>Description</th></tr>
+<tr><td>1</td><td>Stop Loss Methods</td><td><span class="badge badge-red">Protection</span></td><td>Fixed Pips, ATR Multiplier, Price Promille</td></tr>
+<tr><td>2</td><td>10-Level TP Ladder</td><td><span class="badge badge-green">Profit</span></td><td>10 partial close levels with RRR triggers and % sizing</td></tr>
+<tr><td>3</td><td>Breakeven</td><td><span class="badge badge-blue">Protection</span></td><td>Auto SL to entry after profit threshold + buffer</td></tr>
+<tr><td>4</td><td>Stop Loss Steps</td><td><span class="badge badge-blue">Protection</span></td><td>Progressive SL ratchet as trade extends</td></tr>
+<tr><td>5</td><td>Trailing Stop</td><td><span class="badge badge-green">Protection</span></td><td>RRR-based steps or fixed percentage trailing</td></tr>
+<tr><td>6</td><td>Daily Account Trailing</td><td><span class="badge badge-gold">Account</span></td><td>Equity trailing stop, closes all on retrace</td></tr>
+<tr><td>7</td><td>Daily Loss Limit</td><td><span class="badge badge-red">Account</span></td><td>Money or % based, auto-resume at configured time</td></tr>
+<tr><td>8</td><td>Daily Profit Limit</td><td><span class="badge badge-green">Account</span></td><td>Locks daily gains, stops new entries</td></tr>
+<tr><td>9</td><td>Weekly Loss Limit</td><td><span class="badge badge-red">Account</span></td><td>Weekly period with resume day/time config</td></tr>
+<tr><td>10</td><td>Weekly Profit Limit</td><td><span class="badge badge-green">Account</span></td><td>Weekly profit cap with auto-resume</td></tr>
+<tr><td>11</td><td>Max Entries Per Day</td><td><span class="badge badge-blue">Exposure</span></td><td>Caps new trade entries per day</td></tr>
+<tr><td>12</td><td>Max Open Lot Control</td><td><span class="badge badge-blue">Exposure</span></td><td>Per symbol or cross-symbol lot cap</td></tr>
+<tr><td>13</td><td>Spread/Commission Comp</td><td><span class="badge badge-gold">Precision</span></td><td>Adjusts TP/SL for actual execution costs</td></tr>
+<tr><td>14</td><td>Direction Filter</td><td><span class="badge badge-blue">Filter</span></td><td>Long Only, Short Only, or Both Directions</td></tr>
+<tr><td>15</td><td>Trade Cooldown</td><td><span class="badge badge-blue">Timing</span></td><td>Separate cooldowns for main, re-entry, scale-in</td></tr>
+</table>
+</div>
+</div>
+<!-- Tab 3: Trade Management -->
+<div class="panel" id="panel-3">
+<div class="card">
+<h2>Re-Entry System</h2>
+<table><tr><th>Feature</th><th>Details</th></tr>
+<tr><td>Series Count</td><td>Fixed number, 0 to disable, or -1 for infinite</td></tr>
+<tr><td>Signal Logic</td><td>Each re-entry respects full signal and filter logic</td></tr>
+<tr><td>Cooldown</td><td>Dedicated cooldown bar setting</td></tr>
+<tr><td>Magic Number</td><td>1001 for clean position tracking</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Scale-In System</h2>
+<table><tr><th>Feature</th><th>Details</th></tr>
+<tr><td>Levels</td><td>10 independent scale-in levels</td></tr>
+<tr><td>Triggers</td><td>RRR multiplier distance, positive or negative</td></tr>
+<tr><td>Position Size</td><td>Percentage of main position per level</td></tr>
+<tr><td>Magic Number</td><td>1002 for separate tracking</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Additional Systems</h2>
+<table><tr><th>System</th><th>Details</th></tr>
+<tr><td>Profit Scaling-Out</td><td>Account-level partial close at profit milestones (balance % or fixed amount)</td></tr>
+<tr><td>News Filter</td><td>Live calendar, High/Medium/Low impact, configurable pause before/after events</td></tr>
+<tr><td>Hours Filter</td><td>Session windows, timezone-aware, DST adjustment, Friday close option</td></tr>
+<tr><td>Dashboard</td><td>Real-time overlay: positions, P&L, signal states, filter status</td></tr>
+<tr><td>Alerts</td><td>Push, email, sound/popup on trade open/close, signal changes</td></tr>
+</table>
+</div>
+</div>
+<!-- Tab 4: Parameters -->
+<div class="panel" id="panel-4">
+<div class="card">
+<h2>Parameter Groups</h2>
+<table><tr><th>Group</th><th>Description</th></tr>
+<tr><td>Alerts Settings</td><td>Sound, push, and email notification controls</td></tr>
+<tr><td>Global Settings</td><td>Magic numbers and deviation tolerance</td></tr>
+<tr><td>Trade Settings</td><td>Entry mode, direction, max entries, risk %, hedge, spread compensation</td></tr>
+<tr><td>Re-Entry Settings</td><td>Series count and infinite mode toggle</td></tr>
+<tr><td>Stoploss Settings</td><td>Method selection (Fixed/ATR/Promille), period, multiplier</td></tr>
+<tr><td>Max Open Lot</td><td>Per-symbol or cross-symbol lot cap</td></tr>
+<tr><td>Daily Trailing</td><td>Account equity trailing with start, step, amount, resume schedule</td></tr>
+<tr><td>Profit Scaling-Out</td><td>Balance or fixed amount trigger with close percentage</td></tr>
+<tr><td>Targets</td><td>10 TP levels, breakeven, SL steps</td></tr>
+<tr><td>Scale-In Entry</td><td>10 levels with RRR trigger, size %, entry deviation tolerance</td></tr>
+<tr><td>Trade Cool Down</td><td>Per-type cooldown bars on configurable timeframe</td></tr>
+<tr><td>Trailing Stop</td><td>Steps or Percentage mode with dedicated sub-settings</td></tr>
+<tr><td>Daily/Weekly P&L</td><td>Loss and profit values (money or %) with resume scheduling</td></tr>
+<tr><td>Hours Filter</td><td>Session window, timezone, DST, close-on-filter options</td></tr>
+<tr><td>News Filter</td><td>Impact toggles, pause seconds, visual chart display</td></tr>
+<tr><td>Trading Rules</td><td>12 signal types x 3 slots, full parameter sets per slot</td></tr>
+<tr><td>Tester Settings</td><td>6 custom optimization criteria</td></tr>
+<tr><td>Dashboard</td><td>Enable/disable, font, colors, max display actions</td></tr>
+</table>
+</div>
+</div>
+<!-- Tab 5: SET Files -->
+<div class="panel" id="panel-5">
+<div class="card">
+<h2>100 Pre-Built SET File Configurations</h2>
+<table><tr><th>Category</th><th>Range</th><th>Focus</th></tr>
+<tr><td><span class="badge badge-gold">A</span></td><td>001-020</td><td>NikaCross variations &mdash; all 11 MA types, different timeframes, Heiken Ashi toggles</td></tr>
+<tr><td><span class="badge badge-gold">B</span></td><td>021-035</td><td>NikaCross + filter combos &mdash; multi-slot, multi-timeframe, ALL/ANY logic</td></tr>
+<tr><td><span class="badge badge-blue">C</span></td><td>036-055</td><td>Alternative signal modes &mdash; HistLevCross, MACross, 2SigCross, SigAvgUD, MAPriceCross</td></tr>
+<tr><td><span class="badge badge-red">D</span></td><td>056-065</td><td>Stoploss method variations &mdash; Fixed, ATR, Promille at different settings</td></tr>
+<tr><td><span class="badge badge-green">E</span></td><td>066-075</td><td>TP/Exit variations &mdash; partial close ladders, trailing configurations</td></tr>
+<tr><td><span class="badge badge-green">F</span></td><td>076-088</td><td>Re-entry, scale-in, and exposure control configurations</td></tr>
+<tr><td><span class="badge badge-blue">G</span></td><td>089-100</td><td>Risk management/filters &mdash; session hours, news, daily PL, cooldowns</td></tr>
+</table>
+</div>
+</div>
+<!-- Tab 6: Backtest Results -->
+<div class="panel" id="panel-6">
+<div class="card">
+<h2>Backtested Performance</h2>
+<p style="color:#888;margin-bottom:15px">XAUUSD M10 | Jan 2025 - Mar 2026 | $200,000 | 1:100 | Darwinex-Demo | 5ms delay | 1-min OHLC</p>
+<table><tr><th>Config</th><th>Profit Factor</th><th>Recovery</th><th>Sharpe</th><th>Drawdown</th><th>Trades</th><th>Net Profit</th></tr>
+<tr><td><span class="badge badge-red">Aggressive A</span></td><td>1.31</td><td>7.97</td><td>7.40</td><td>9.55%</td><td>1,498</td><td>+$374,292 (+187%)</td></tr>
+<tr><td><span class="badge badge-blue">Conservative B</span></td><td>1.59</td><td>13.48</td><td>13.48</td><td>4.04%</td><td>958</td><td>+$196,000 (+98%)</td></tr>
+<tr><td><span class="badge badge-green">Balanced C</span></td><td>1.66</td><td>12.43</td><td>14.94</td><td>4.73%</td><td>862</td><td>+$199,000 (+100%)</td></tr>
+<tr><td><span class="badge badge-gold">High Win Rate</span></td><td>1.96</td><td>&mdash;</td><td>19.66</td><td>1.82%</td><td>281</td><td>+$13,389 (92.17% WR)</td></tr>
+</table>
+</div>
+<div class="card">
+<h2>Prop Firm Verified</h2>
+<div class="grid">
+<div class="stat"><div class="val">$150K</div><div class="lbl">FunderPro Account</div></div>
+<div class="stat"><div class="val">$10,537</div><div class="lbl">Verified Payout</div></div>
+<div class="stat"><div class="val">Top 4</div><div class="lbl">Global Ranking</div></div>
+</div>
+</div>
+<div class="card">
+<h2>Custom Optimizer Criteria</h2>
+<table><tr><th>#</th><th>Formula</th></tr>
+<tr><td>1</td><td>Result / (Drawdown + 2)</td></tr>
+<tr><td>2</td><td>Result &times; Recovery Factor</td></tr>
+<tr><td>3</td><td>(Result / Drawdown + 2) &times; Recovery Factor</td></tr>
+<tr><td>4</td><td>(Result / Drawdown) &times; Recovery Factor</td></tr>
+<tr><td>5</td><td>(Result / Drawdown) &times; Sharpe Ratio</td></tr>
+<tr><td>6</td><td>Win Rate-weighted criterion</td></tr>
+</table>
+</div>
+</div>
+<!-- Tab 7: MA Library -->
+<div class="panel" id="panel-7">
+<div class="card">
+<h2>11 Moving Average Methods</h2>
+<table><tr><th>#</th><th>Method</th><th>Abbreviation</th><th>Characteristics</th></tr>
+<tr><td>1</td><td>Simple</td><td>SMA</td><td>Equal weight, most lag, smoothest</td></tr>
+<tr><td>2</td><td>Exponential</td><td>EMA</td><td>Recent weight, moderate lag</td></tr>
+<tr><td>3</td><td>Weighted</td><td>WMA</td><td>Linear weight, responsive</td></tr>
+<tr><td>4</td><td>Volume-Weighted</td><td>VWMA</td><td>Volume-adjusted, market-aware</td></tr>
+<tr><td>5</td><td>Relative</td><td>RMA</td><td>Wilder's smoothing, stable</td></tr>
+<tr><td>6</td><td>Double Exponential</td><td>DEMA</td><td>Reduced lag, faster response</td></tr>
+<tr><td>7</td><td>Triple Exponential</td><td>TEMA</td><td>Minimal lag, very responsive</td></tr>
+<tr><td>8</td><td>Zero-Lag Exponential</td><td>ZLEMA</td><td>Near-zero lag correction</td></tr>
+<tr><td>9</td><td>Hull</td><td>HMA</td><td>Speed + smoothness balanced</td></tr>
+<tr><td>10</td><td>Donchian Midpoint</td><td>DONCH</td><td>Channel-based, range midpoint</td></tr>
+<tr><td>11</td><td>T3 / Tillson</td><td>T3</td><td>Configurable smoothing factor, ultra-smooth</td></tr>
+</table>
+</div>
+</div>
+</div><!-- end content -->
+<div class="footer">
+<p>&copy; 2026 NIKA &bull; <a href="https://www.mql5.com/en/market/product/167134">Get Nika EA on MQL5 Market</a> &bull; <a href="index.html">Documentation Hub</a></p>
+</div>
+<script>
+function showTab(n){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('panel-'+n).classList.add('active');document.querySelectorAll('.tab')[n].classList.add('active');}
+</script>
+</body>
+</html>
