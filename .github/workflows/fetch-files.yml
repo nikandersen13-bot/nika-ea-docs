@@ -1,4 +1,4 @@
-name: Fetch HTML files
+name: Fetch PDF files
 on:
   workflow_dispatch:
 jobs:
@@ -8,14 +8,19 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Download files
+      - name: Download PDF files
         run: |
-          curl -L -o god-mode.html "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/5612a6b1-f0f6-47ea-bb21-a58ef9ab3432/Nika_EA_V1.27_God_Mode.html"
-          curl -L -o quick-reference.html "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/1fa7f204-20f7-4f90-a149-34224f5a4e54/Nika_EA_V1.27_Quick_Reference-2.html"
+          curl -L -o Nika_EA_V127_Comprehensive_Analysis.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/420ee957-c8cd-4285-8762-8f58ee23552e/Nika_EA_V127_Comprehensive_Analysis-2-2.pdf"
+          curl -L -o Nika_EA_V127_Quick_Reference.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/f2bcdd54-9b25-49bb-af07-f9aee7244824/Nika_EA_V127_Quick_Reference-2-3.pdf"
+          curl -L -o Nika-EA-V1.28-Professional-Assessment.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/4c42ff83-361d-4a5d-b920-830e49f52bbe/Nika-EA-V1.28-Professional-Assessment.pdf"
+      - name: Verify downloads
+        run: |
+          ls -la *.pdf
+          file *.pdf
       - name: Commit files
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add god-mode.html quick-reference.html
-          git commit -m "Add God Mode Dashboard and Quick Reference HTML files"
+          git add *.pdf
+          git commit -m "Add PDF documentation files"
           git push
