@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download PDF files
         run: |
-          curl -fL -A "Mozilla/5.0" -o Nika_EA_V127_Comprehensive_Analysis.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/ab74b57a-fd68-429f-9d1e-82073186990c/Nika_EA_V127_Comprehensive_Analysis-2-5.pdf"
-          curl -fL -A "Mozilla/5.0" -o Nika_EA_V127_Quick_Reference.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/45c84474-d237-4eab-85da-595225804a6c/Nika_EA_V127_Quick_Reference-2-4.pdf"
-          curl -fL -A "Mozilla/5.0" -o Nika-EA-V1.28-Professional-Assessment.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/68fac5bc-234d-4e8e-805b-753a9e1090bf/Nika-EA-V1.28-Professional-Assessment-2.pdf"
+          wget --header="User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" --header="Accept: application/pdf,*/*" -O Nika_EA_V127_Comprehensive_Analysis.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/ab74b57a-fd68-429f-9d1e-82073186990c/Nika_EA_V127_Comprehensive_Analysis-2-5.pdf"
+          wget --header="User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" --header="Accept: application/pdf,*/*" -O Nika_EA_V127_Quick_Reference.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/45c84474-d237-4eab-85da-595225804a6c/Nika_EA_V127_Quick_Reference-2-4.pdf"
+          wget --header="User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" --header="Accept: application/pdf,*/*" -O Nika-EA-V1.28-Professional-Assessment.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/68fac5bc-234d-4e8e-805b-753a9e1090bf/Nika-EA-V1.28-Professional-Assessment-2.pdf"
       - name: Verify downloads
         run: |
           ls -la *.pdf
