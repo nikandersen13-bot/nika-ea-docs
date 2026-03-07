@@ -8,25 +8,36 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Download PDF files
+      - name: Install playwright
+        run: pip install playwright && playwright install chromium
+      - name: Download PDF files via browser
         run: |
-          python3 << 'EOF'
-          import urllib.request
-          files = [
-            ('https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/ab74b57a-fd68-429f-9d1e-82073186990c/Nika_EA_V127_Comprehensive_Analysis-2-5.pdf', 'Nika_EA_V127_Comprehensive_Analysis.pdf'),
-            ('https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/45c84474-d237-4eab-85da-595225804a6c/Nika_EA_V127_Quick_Reference-2-4.pdf', 'Nika_EA_V127_Quick_Reference.pdf'),
-            ('https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/68fac5bc-234d-4e8e-805b-753a9e1090bf/Nika-EA-V1.28-Professional-Assessment-2.pdf', 'Nika-EA-V1.28-Professional-Assessment.pdf'),
-          ]
-          for url, name in files:
-            print(f'Downloading {name}...')
-            req = urllib.request.Request(url)
-            req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
-            req.add_header('Accept', '*/*')
-            with urllib.request.urlopen(req) as resp:
-              with open(name, 'wb') as f:
-                f.write(resp.read())
-            print(f'Downloaded {name}')
-          EOF
+          python3 << 'PYEOF'
+          import asyncio
+          from playwright.async_api import async_playwright
+          
+          async def main():
+              files = [
+                  ('https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/ab74b57a-fd68-429f-9d1e-82073186990c/Nika_EA_V127_Comprehensive_Analysis-2-5.pdf', 'Nika_EA_V127_Comprehensive_Analysis.pdf'),
+                  ('https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/45c84474-d237-4eab-85da-595225804a6c/Nika_EA_V127_Quick_Reference-2-4.pdf', 'Nika_EA_V127_Quick_Reference.pdf'),
+                  ('https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/68fac5bc-234d-4e8e-805b-753a9e1090bf/Nika-EA-V1.28-Professional-Assessment-2.pdf', 'Nika-EA-V1.28-Professional-Assessment.pdf'),
+              ]
+              async with async_playwright() as p:
+                  browser = await p.chromium.launch()
+                  context = await browser.new_context()
+                  for url, name in files:
+                      print(f'Downloading {name}...')
+                      page = await context.new_page()
+                      resp = await page.request.get(url)
+                      body = await resp.body()
+                      with open(name, 'wb') as f:
+                          f.write(body)
+                      print(f'Downloaded {name} ({len(body)} bytes)')
+                      await page.close()
+                  await browser.close()
+          
+          asyncio.run(main())
+          PYEOF
       - name: Verify downloads
         run: |
           ls -la *.pdf
