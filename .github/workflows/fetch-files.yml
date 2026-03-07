@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download PDF files
         run: |
-          curl -fL -o Nika_EA_V127_Comprehensive_Analysis.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/ab74b57a-fd68-429f-9d1e-8207318d909c/Nika_EA_V127_Comprehensive_Analysis-2-5.pdf"
-          curl -fL -o Nika_EA_V127_Quick_Reference.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/45c8447d-0237-4eab-85da-5952250c04a6/Nika_EA_V127_Quick_Reference-2-4.pdf"
-          curl -fL -o Nika-EA-V1.28-Professional-Assessment.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/4dfac58c-234d-4e6e-885b-755a4e109bff/Nika-EA-V1.28-Professional-Assessment.pdf"
+          curl -fL -A "Mozilla/5.0" -o Nika_EA_V127_Comprehensive_Analysis.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/ab74b57a-fd68-429f-9d1e-82073186990c/Nika_EA_V127_Comprehensive_Analysis-2-5.pdf"
+          curl -fL -A "Mozilla/5.0" -o Nika_EA_V127_Quick_Reference.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/45c84474-d237-4eab-85da-595225804a6c/Nika_EA_V127_Quick_Reference-2-4.pdf"
+          curl -fL -A "Mozilla/5.0" -o Nika-EA-V1.28-Professional-Assessment.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/68fac5bc-234d-4e8e-805b-753a9e1090bf/Nika-EA-V1.28-Professional-Assessment-2.pdf"
       - name: Verify downloads
         run: |
           ls -la *.pdf
