@@ -11,18 +11,19 @@ body{font-family:'Segoe UI',sans-serif;background:#0a0e14;color:#e6edf3;min-heig
 h1{font-size:2rem;margin-bottom:8px}
 .sub{color:#8b949e;margin-bottom:40px}
 .section-title{color:#00d4ff;font-size:.85rem;text-transform:uppercase;letter-spacing:2px;margin:35px 0 15px;border-bottom:1px solid #1e2630;padding-bottom:8px;text-align:left}
-.cards{display:grid;gap:20px}
-.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:28px;text-decoration:none;color:#e6edf3;transition:all .2s}
+.cards{display:grid;gap:14px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;text-decoration:none;color:#e6edf3;transition:all .2s}
 .card:hover{border-color:#00d4ff;transform:translateY(-2px);box-shadow:0 0 20px rgba(0,212,255,.1)}
 .card h2{font-size:1.1rem;margin-bottom:6px}
 .card p{color:#8b949e;font-size:.9rem}
 .badge{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:4px;margin-top:8px}
-.god{background:rgba(255,215,0,.15);color:#ffd700}
-.quick{background:rgba(0,212,255,.15);color:#00d4ff}
-.pdf{background:rgba(139,233,253,.15);color:#8be9fd}
-.tcc{background:rgba(80,250,123,.15);color:#50fa7b}
 .market{background:rgba(255,121,198,.15);color:#ff79c6}
+.dash{background:rgba(255,215,0,.15);color:#ffd700}
+.ref{background:rgba(0,212,255,.15);color:#00d4ff}
+.pdf{background:rgba(139,233,253,.15);color:#8be9fd}
 .blog{background:rgba(189,147,249,.15);color:#bd93f9}
+.buy{background:linear-gradient(135deg,#161b22,#1a1f2b);border-color:#ff79c6}
+.buy:hover{border-color:#ff92d0;box-shadow:0 0 20px rgba(255,121,198,.15)}
 footer{margin-top:40px;color:#484f58;font-size:.8rem}
 footer a{color:#00d4ff;text-decoration:none}
 </style>
@@ -32,22 +33,23 @@ footer a{color:#00d4ff;text-decoration:none}
 <h1>NIKA-QUANT</h1>
 <p class="sub">Documentation & Resources Hub</p>
 
-<div class="section-title">Nika EA V1.28 - Interactive Dashboards</div>
+<div class="section-title">Nika EA V1.28 - Expert Advisor</div>
 <div class="cards">
+<a href="https://www.mql5.com/en/market/product/167134" class="card buy" target="_blank">
+<h2>Get Nika EA on MQL5 Market</h2>
+<p>Automated trading for MetaTrader 5 with advanced signal engine, multi-layer risk management, and 50+ moving average types.</p>
+<span class="badge market">MQL5 MARKET</span>
+</a>
 <a href="god-mode.html" class="card">
 <h2>God Mode Dashboard</h2>
 <p>Complete 8-tab interactive command center with architecture, signal engine, parameters, risk management, entry logic, SET files, optimization guide, and MA library.</p>
-<span class="badge god">PREMIUM DASHBOARD</span>
+<span class="badge dash">INTERACTIVE DASHBOARD</span>
 </a>
 <a href="quick-reference.html" class="card">
 <h2>Quick Reference Guide</h2>
 <p>Concise cheat sheet with architecture overview, signal modes, parameter reference, risk layers, MA types, and OnTester formulas.</p>
-<span class="badge quick">QUICK REFERENCE</span>
+<span class="badge ref">INTERACTIVE REFERENCE</span>
 </a>
-</div>
-
-<div class="section-title">Nika EA - PDF Documents</div>
-<div class="cards">
 <a href="Nika-EA-V1.28-Professional-Assessment.pdf" class="card" target="_blank">
 <h2>Professional Assessment V1.28</h2>
 <p>In-depth professional assessment and evaluation of Nika EA version 1.28.</p>
@@ -67,10 +69,15 @@ footer a{color:#00d4ff;text-decoration:none}
 
 <div class="section-title">Telegram Control Center (TCC)</div>
 <div class="cards">
+<a href="https://www.mql5.com/en/market/product/167973" class="card buy" target="_blank">
+<h2>Get TCC on MQL5 Market</h2>
+<p>Real-time MT5 monitoring, Telegram alerts, and remote position management from your phone.</p>
+<span class="badge market">MQL5 MARKET</span>
+</a>
 <a href="TCC_Setup_Guide_v1.20.pdf" class="card" target="_blank">
 <h2>TCC Setup Guide V1.20</h2>
-<p>Complete setup guide for Telegram Control Center - bridge your MT5 account with Telegram for monitoring, alerts, and remote commands.</p>
-<span class="badge tcc">PDF SETUP GUIDE</span>
+<p>Complete setup guide - bridge your MT5 account with Telegram for monitoring, alerts, and remote commands.</p>
+<span class="badge pdf">PDF SETUP GUIDE</span>
 </a>
 <a href="https://www.mql5.com/en/blogs/post/767874" class="card" target="_blank">
 <h2>TCC Setup Guide - Blog Post</h2>
@@ -79,20 +86,10 @@ footer a{color:#00d4ff;text-decoration:none}
 </a>
 </div>
 
-<div class="section-title">MQL5 Market</div>
+<div class="section-title">Nika Quant Analyzer</div>
 <div class="cards">
-<a href="https://www.mql5.com/en/market/product/167134" class="card" target="_blank">
-<h2>Nika EA on MQL5 Market</h2>
-<p>Get the Nika EA Expert Advisor for MetaTrader 5 - automated trading with advanced signal engine and risk management.</p>
-<span class="badge market">MQL5 MARKET</span>
-</a>
-<a href="https://www.mql5.com/en/market/product/167973" class="card" target="_blank">
-<h2>Telegram Control Center on MQL5 Market</h2>
-<p>Get TCC for MetaTrader 5 - real-time monitoring, Telegram alerts, and remote position management.</p>
-<span class="badge market">MQL5 MARKET</span>
-</a>
-  <a href="https://www.mql5.com/en/market/product/167859" class="card" target="_blank">
-<h2>Nika Quant Analyzer on MQL5 Market</h2>
+<a href="https://www.mql5.com/en/market/product/167859" class="card buy" target="_blank">
+<h2>Get Nika Quant Analyzer on MQL5 Market</h2>
 <p>Professional optimization analysis for MT5 Strategy Tester - ranks every parameter combination using the proprietary QM+ Score metric.</p>
 <span class="badge market">MQL5 MARKET</span>
 </a>
