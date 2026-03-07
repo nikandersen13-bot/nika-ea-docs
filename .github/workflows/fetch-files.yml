@@ -10,10 +10,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download PDF files
         run: |
-          curl -L -o Nika_EA_V127_Comprehensive_Analysis.pdf "https://drive.google.com/uc?export=download&id=1Takd2SmrU39TvrtWiMuv-ZehySe0p0vk"
-          curl -L -o Nika_EA_V127_Quick_Reference.pdf "https://drive.google.com/uc?export=download&id=1LuP6k_16n3k70P550P9-1Lu86amIVFr3"
-          curl -L -o Nika-EA-V1.28-Professional-Assessment.pdf "https://drive.google.com/uc?export=download&id=1-YpEjmPqs81zhok8LEP8URIdPOC6V6HN"
-          curl -L -o TCC_Setup_Guide_v1.20.pdf "https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52772277/0d9b546c-c222-4b7d-ae72-c4cc69b920f8/TCC_Setup_Guide_v1.20.pdf"
+          curl -fL -o Nika_EA_V127_Comprehensive_Analysis.pdf "https://drive.google.com/uc?export=download&id=1Takd2SmrU39TvrthlMuv-ZehySe0p0vk"
+          curl -fL -o Nika_EA_V127_Quick_Reference.pdf "https://drive.google.com/uc?export=download&id=1LuP6k_16n3k70P550P9-1Lu86amIVFr3"
+          curl -fL -o Nika-EA-V1.28-Professional-Assessment.pdf "https://drive.google.com/uc?export=download&id=1-YpfjMPqs8I1zhok8LEP8URtdPOC6V6HN"
       - name: Verify downloads
         run: |
           ls -la *.pdf
